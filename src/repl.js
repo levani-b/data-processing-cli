@@ -8,6 +8,7 @@ import { count } from "./commands/count.js";
 import { hash } from "./commands/hash.js";
 import { hashCompare } from "./commands/hashCompare.js";
 import { encrypt } from "./commands/encrypt.js";
+import { decrypt } from "./commands/decrypt.js";
 
 export const startRepl = () => {
   const rl = readline.createInterface({
@@ -63,6 +64,9 @@ export const startRepl = () => {
         break;
       case "encrypt":
         await encrypt(args);
+        break;
+      case "decrypt":
+        await decrypt(args);
         break;
       default:
         console.log("Invalid input");
