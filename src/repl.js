@@ -1,5 +1,5 @@
 import readline from "node:readline";
-import os from "node:os";
+import { state } from "./state.js";
 
 export const startRepl = () => {
   const rl = readline.createInterface({
@@ -8,9 +8,8 @@ export const startRepl = () => {
     prompt: "> ",
   });
 
-  const cwd = os.homedir();
   console.log("Welcome to Data Processing CLI");
-  console.log(`You are currently in ${cwd}`);
+  console.log(`You are currently in ${state.cwd}`);
   rl.prompt();
 
   rl.on("line", (line) => {
