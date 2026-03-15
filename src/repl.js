@@ -3,6 +3,7 @@ import { state } from "./state.js";
 import { parseArgs } from "./utils/argParser.js";
 import { up, cd, ls } from "./navigation.js";
 import { csvToJson } from "./commands/csvToJson.js";
+import { jsonToCsv } from "./commands/jsonToCsv.js";
 
 export const startRepl = () => {
   const rl = readline.createInterface({
@@ -43,6 +44,9 @@ export const startRepl = () => {
         break;
       case "csv-to-json":
         await csvToJson(args);
+        break;
+      case "json-to-csv":
+        await jsonToCsv(args);
         break;
       default:
         console.log("Invalid input");
