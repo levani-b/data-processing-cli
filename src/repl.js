@@ -1,6 +1,7 @@
 import readline from "node:readline";
 import { state } from "./state.js";
 import { parseArgs } from "./utils/argParser.js";
+import { up, cd, ls } from "./navigation.js";
 
 export const startRepl = () => {
   const rl = readline.createInterface({
@@ -13,7 +14,7 @@ export const startRepl = () => {
   console.log(`You are currently in ${state.cwd}`);
   rl.prompt();
 
-  rl.on("line", (line) => {
+  rl.on("line", async (line) => {
     const trimmed = line.trim();
 
     if (!trimmed) {
@@ -30,10 +31,14 @@ export const startRepl = () => {
 
     switch (command) {
       case "up":
+        up();
         break;
       case "cd":
+        const cdPath = trimmed.split(/\s+/)[1];
+        await cd(cdPath);
         break;
       case "ls":
+        await ls();
         break;
       default:
         console.log("Invalid input");
