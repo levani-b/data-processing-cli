@@ -4,6 +4,7 @@ import { parseArgs } from "./utils/argParser.js";
 import { up, cd, ls } from "./navigation.js";
 import { csvToJson } from "./commands/csvToJson.js";
 import { jsonToCsv } from "./commands/jsonToCsv.js";
+import { count } from "./commands/count.js";
 
 export const startRepl = () => {
   const rl = readline.createInterface({
@@ -47,6 +48,9 @@ export const startRepl = () => {
         break;
       case "json-to-csv":
         await jsonToCsv(args);
+        break;
+      case "count":
+        await count(args);
         break;
       default:
         console.log("Invalid input");
