@@ -5,6 +5,7 @@ import { up, cd, ls } from "./navigation.js";
 import { csvToJson } from "./commands/csvToJson.js";
 import { jsonToCsv } from "./commands/jsonToCsv.js";
 import { count } from "./commands/count.js";
+import { hash } from "./commands/hash.js";
 
 export const startRepl = () => {
   const rl = readline.createInterface({
@@ -51,6 +52,9 @@ export const startRepl = () => {
         break;
       case "count":
         await count(args);
+        break;
+      case "hash":
+        await hash(args);
         break;
       default:
         console.log("Invalid input");
